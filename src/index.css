@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* INMED South Africa Design System - White base with professional humanitarian colors */
 
 @layer base {
   :root {
+    /* Base colors - White foundation */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 24% 16%;
 
+    /* Card system */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 24% 16%;
 
+    /* Popover system */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 24% 16%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Professional Blue for trust and reliability */
+    --primary: 212 47% 35%;
+    --primary-light: 212 45% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Warm teal for hope and growth */
+    --secondary: 174 62% 47%;
+    --secondary-light: 174 55% 55%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Warm orange for humanity and warmth */
+    --accent: 25 88% 55%;
+    --accent-light: 25 85% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Success - Green for impact and growth */
+    --success: 142 76% 36%;
+    --success-light: 142 69% 46%;
+    --success-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Neutral system */
+    --muted: 210 18% 96%;
+    --muted-foreground: 210 13% 48%;
+    --muted-darker: 210 16% 90%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Border and input */
+    --border: 210 18% 90%;
+    --input: 210 18% 94%;
+    --ring: 212 47% 35%;
 
-    --radius: 0.5rem;
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Gradients for hero sections and CTAs */
+    --gradient-primary: linear-gradient(135deg, hsl(212 47% 35%), hsl(212 45% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(174 62% 47%), hsl(174 55% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(212 47% 35%) 0%, hsl(174 62% 47%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(25 88% 55%) 0%, hsl(25 85% 65%) 100%);
+
+    /* Shadows for depth */
+    --shadow-soft: 0 2px 8px hsl(210 24% 16% / 0.04);
+    --shadow-medium: 0 4px 16px hsl(210 24% 16% / 0.08);
+    --shadow-strong: 0 8px 32px hsl(210 24% 16% / 0.12);
+
+    /* Border radius */
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
