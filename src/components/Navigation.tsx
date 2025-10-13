@@ -36,6 +36,13 @@ const Navigation = () => {
               <Button variant="cta" size="sm">
                 Get Involved
               </Button>
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={() => window.location.href = '/auth'}
+              >
+                Login
+              </Button>
             </div>
           </div>
 
@@ -65,9 +72,17 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-2">
+              <div className="px-3 py-2 space-y-2">
                 <Button variant="cta" size="sm" className="w-full">
                   Get Involved
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => window.location.href = '/auth'}
+                >
+                  Login
                 </Button>
               </div>
             </div>

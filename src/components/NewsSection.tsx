@@ -1,31 +1,50 @@
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, FileText, GraduationCap } from "lucide-react";
 
 const NewsSection = () => {
-  const newsItems = [
-    {
-      category: "Project Launch",
-      title: "New School Garden Initiative Launches in Eastern Cape",
-      excerpt: "Partnering with local schools to establish 50 new school gardens, promoting food security and environmental education.",
-      date: "March 15, 2024",
-      icon: <FileText className="w-5 h-5" />
-    },
-    {
-      category: "Field Visit",
-      title: "Minister Visits INMED Aquaponics Project",
-      excerpt: "Government officials witness the impact of our innovative aquaponics social enterprise program.",
-      date: "March 10, 2024",
-      icon: <Calendar className="w-5 h-5" />
-    },
-    {
-      category: "Training",
-      title: "Women Entrepreneurs Graduate from Skills Program",
-      excerpt: "25 women complete our climate-smart livelihoods training, ready to start their own sustainable businesses.",
-      date: "March 5, 2024",
-      icon: <GraduationCap className="w-5 h-5" />
+  const [newsItems, setNewsItems] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchNewsItems();
+  }, []);
+
+  const fetchNewsItems = async () => {
+    const { data, error } = await supabase
+      .from("news_items")
+      .select("*")
+      .eq("published", true)
+      .order("created_at", { ascending: false })
+      .limit(3);
+
+    if (!error && data) {
+      setNewsItems(data);
     }
-  ];
+    setLoading(false);
+  };
+
+  const getCategoryIcon = (category: string) => {
+    if (category.toLowerCase().includes("project") || category.toLowerCase().includes("launch")) {
+      return <FileText className="w-5 h-5" />;
+    }
+    if (category.toLowerCase().includes("visit") || category.toLowerCase().includes("field")) {
+      return <Calendar className="w-5 h-5" />;
+    }
+    return <GraduationCap className="w-5 h-5" />;
+  };
+
+  if (loading) {
+    return (
+      <section id="news" className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-muted-foreground">Loading news...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="news" className="py-20 bg-background">
@@ -41,29 +60,44 @@ const NewsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {newsItems.map((item, index) => (
-            <Card key={index} className="overflow-hidden shadow-medium hover:shadow-strong transition-all duration-300 group">
-              <div className="p-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <div className="text-primary">{item.icon}</div>
-                  <span className="text-sm font-medium text-primary">{item.category}</span>
+          {newsItems.length === 0 ? (
+            <div className="col-span-full text-center py-12">
+              <p className="text-muted-foreground">No news items available at this time.</p>
+            </div>
+          ) : (
+            newsItems.map((item) => (
+              <Card key={item.id} className="overflow-hidden shadow-medium hover:shadow-strong transition-all duration-300 group">
+                {item.image_url && (
+                  <img 
+                    src={item.image_url} 
+                    alt={item.title}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
+                <div className="p-6">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <div className="text-primary">{getCategoryIcon(item.category)}</div>
+                    <span className="text-sm font-medium text-primary">{item.category}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {item.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">
+                      {new Date(item.created_at).toLocaleDateString()}
+                    </span>
+                    <Button variant="ghost" size="sm" className="group-hover:text-primary">
+                      Read More
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Button>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  {item.excerpt}
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">{item.date}</span>
-                  <Button variant="ghost" size="sm" className="group-hover:text-primary">
-                    Read More
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            ))
+          )}
         </div>
 
         {/* Resources Section */}
