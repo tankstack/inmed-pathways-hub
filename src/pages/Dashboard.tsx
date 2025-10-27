@@ -6,6 +6,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import NewsManager from "@/components/dashboard/NewsManager";
+import EventsManager from "@/components/dashboard/EventsManager";
+import ResourcesManager from "@/components/dashboard/ResourcesManager";
+import DonationsAnalytics from "@/components/dashboard/DonationsAnalytics";
 import { LogOut, Home } from "lucide-react";
 
 const Dashboard = () => {
@@ -124,12 +127,27 @@ const Dashboard = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs defaultValue="news" className="w-full">
-          <TabsList className="grid w-full max-w-md grid-cols-1">
-            <TabsTrigger value="news">News & Updates</TabsTrigger>
+          <TabsList className="grid w-full max-w-4xl grid-cols-2 md:grid-cols-4">
+            <TabsTrigger value="news">News</TabsTrigger>
+            <TabsTrigger value="events">Events</TabsTrigger>
+            <TabsTrigger value="resources">Resources</TabsTrigger>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
           </TabsList>
           
           <TabsContent value="news" className="mt-6">
             <NewsManager />
+          </TabsContent>
+
+          <TabsContent value="events" className="mt-6">
+            <EventsManager />
+          </TabsContent>
+
+          <TabsContent value="resources" className="mt-6">
+            <ResourcesManager />
+          </TabsContent>
+
+          <TabsContent value="analytics" className="mt-6">
+            <DonationsAnalytics />
           </TabsContent>
         </Tabs>
       </main>

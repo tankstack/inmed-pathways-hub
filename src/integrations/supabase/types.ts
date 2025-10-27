@@ -14,6 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
+      donations: {
+        Row: {
+          amount: number
+          created_at: string | null
+          currency: string | null
+          donation_date: string | null
+          donor_email: string | null
+          donor_name: string | null
+          id: string
+          notes: string | null
+          status: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          currency?: string | null
+          donation_date?: string | null
+          donor_email?: string | null
+          donor_name?: string | null
+          id?: string
+          notes?: string | null
+          status?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          currency?: string | null
+          donation_date?: string | null
+          donor_email?: string | null
+          donor_name?: string | null
+          id?: string
+          notes?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          content: string | null
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          event_date: string | null
+          id: string
+          image_url: string | null
+          location: string | null
+          published: boolean | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          published?: boolean | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          published?: boolean | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       news_items: {
         Row: {
           category: string
@@ -47,6 +125,45 @@ export type Database = {
           excerpt?: string
           id?: string
           image_url?: string | null
+          published?: boolean | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          file_type: string | null
+          file_url: string
+          id: string
+          published: boolean | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          file_type?: string | null
+          file_url: string
+          id?: string
+          published?: boolean | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          file_type?: string | null
+          file_url?: string
+          id?: string
           published?: boolean | null
           title?: string
           updated_at?: string | null
