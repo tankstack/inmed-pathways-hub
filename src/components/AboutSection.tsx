@@ -43,8 +43,8 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-muted">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="about" className="py-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -114,7 +114,7 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
