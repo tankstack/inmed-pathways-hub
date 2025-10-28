@@ -5,13 +5,6 @@ import { Menu, X } from "lucide-react";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
-    { name: "ABOUT US", href: "#about" },
-    { name: "OUR WORK", href: "#work" },
-    { name: "NEWS & RESOURCES", href: "#news" },
-    { name: "DONATE", href: "#donate" },
-  ];
-
   return (
     <nav className="bg-background shadow-soft sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,71 +16,26 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-300 font-medium text-sm"
-                >
-                  {item.name}
-                </a>
-              ))}
-              <Button variant="cta" size="sm">
-                Get Involved
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm"
-                onClick={() => window.location.href = '/auth'}
-              >
-                Login
-              </Button>
-            </div>
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => window.location.href = '/auth'}
+            >
+              Login
+            </Button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Navigation */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => window.location.href = '/auth'}
             >
-              {isMenuOpen ? <X /> : <Menu />}
+              Login
             </Button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 border-t border-border">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <div className="px-3 py-2 space-y-2">
-                <Button variant="cta" size="sm" className="w-full">
-                  Get Involved
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full"
-                  onClick={() => window.location.href = '/auth'}
-                >
-                  Login
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );

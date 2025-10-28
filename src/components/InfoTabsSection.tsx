@@ -22,10 +22,10 @@ const InfoTabsSection = () => {
               Our Work
             </TabsTrigger>
             <TabsTrigger value="news" className="text-sm lg:text-base font-semibold">
-              News
+              News & Resources
             </TabsTrigger>
             <TabsTrigger value="donate" className="text-sm lg:text-base font-semibold">
-              Get Involved
+              Donate
             </TabsTrigger>
             <TabsTrigger value="contact" className="text-sm lg:text-base font-semibold">
               Contact
