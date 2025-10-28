@@ -38,17 +38,17 @@ const NewsSection = () => {
 
   if (loading) {
     return (
-      <section id="news" className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div id="news" className="py-8">
+        <div className="max-w-7xl mx-auto text-center">
           <p className="text-muted-foreground">Loading news...</p>
         </div>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section id="news" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="news" className="py-8">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Latest News & Updates
@@ -118,7 +118,7 @@ const NewsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
